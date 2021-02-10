@@ -1,0 +1,210 @@
+{
+	"grammar": {
+		"-name": "G4",
+		"terminalsymbols": {
+			"term": [{
+					"-name": "false",
+					"-spell": "false"
+				},
+				{
+					"-name": "true",
+					"-spell": "true"
+				},
+				{
+					"-name": "~",
+					"-spell": "~"
+				},
+				{
+					"-name": "!",
+					"-spell": "!"
+				},
+				{
+					"-name": "&",
+					"-spell": "&"
+				},
+				{
+					"-name": "identifier",
+					"-spell": "identifier"
+				}
+			]
+		},
+		"nonterminalsymbols": {
+			"nonterm": [{
+					"-name": "expression"
+				},
+				{
+					"-name": "logical_expression"
+				},
+				{
+					"-name": "logical_monomial"
+				},
+				{
+					"-name": "secondary_logical_expression"
+				},
+				{
+					"-name": "primary_logical_expression"
+				},
+				{
+					"-name": "boolean_value"
+				}
+			]
+		},
+		"productions": {
+			"production": [{
+					"lhs": {
+						"-name": "expression"
+					},
+					"rhs": {
+						"symbol": [{
+								"-type": "nonterm",
+								"-name": "logical_expression"
+							}
+						]
+					}
+				},
+				{
+					"lhs": {
+						"-name": "logical_expression"
+					},
+					"rhs": {
+						"symbol": [{
+								"-type": "nonterm",
+								"-name": "logical_expression"
+							},
+							{
+								"-type": "term",
+								"-name": "!"
+							},
+							{
+								"-type": "nonterm",
+								"-name": "logical_monomial"
+							}
+						]
+					}
+				},
+				{
+					"lhs": {
+						"-name": "logical_expression"
+					},
+					"rhs": {
+						"symbol": [{
+								"-type": "nonterm",
+								"-name": "logical_monomial"
+							}
+						]
+					}
+				},
+				{
+					"lhs": {
+						"-name": "logical_monomial"
+					},
+					"rhs": {
+						"symbol": {
+							"-type": "nonterm",
+							"-name": "secondary_logical_expression"
+						}
+					}
+				},
+				{
+					"lhs": {
+						"-name": "logical_monomial"
+					},
+					"rhs": {
+						"symbol":[{
+								"-type": "nonterm",
+								"-name": "logical_monomial"
+							},
+							{
+								"-type": "term",
+								"-name": "&"
+							},
+							{
+								"-type": "nonterm",
+								"-name": "secondary_logical_expression"
+							}
+						]
+					}
+				},
+				{
+					"lhs": {
+						"-name": "secondary_logical_expression"
+					},
+					"rhs": {
+						"symbol": [{
+								"-type": "nonterm",
+								"-name": "primary_logical_expression"
+							}
+						]
+					}
+				},
+				{
+					"lhs": {
+						"-name": "secondary_logical_expression"
+					},
+					"rhs": {
+						"symbol": [{
+								"-type": "term",
+								"-name": "~"
+							 },
+							{
+								"-type": "nonterm",
+								"-name": "primary_logical_expression"
+							}
+						]
+					}
+				},
+				{
+					"lhs": {
+						"-name": "primary_logical_expression"
+					},
+					"rhs": {
+						"symbol": [{
+							"-type": "nonterm",
+							"-name": "boolean_value"
+							}
+						]
+					}
+				},
+				{
+					"lhs": {
+						"-name": "primary_logical_expression"
+					},
+					"rhs": {
+						"symbol": [{
+							"-type": "term",
+							"-name": "identifier"
+							}
+						]
+					}
+				},
+				{
+					"lhs": {
+						"-name": "boolean_value"
+					},
+					"rhs": {
+						"symbol": [{
+							"-type": "term",
+							"-name": "false"
+						}
+						]
+					}
+				},
+				{
+					"lhs": {
+						"-name": "boolean_value"
+					},
+					"rhs": {
+						"symbol": [{
+							"-type": "term",
+							"-name": "true"
+						}
+						]
+					}
+				}
+			]
+		},
+		"startsymbol": {
+			"-name": "expression"
+		}
+	}
+}
